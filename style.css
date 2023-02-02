@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    max-width: 560px;
+    height: 560px;
+    
+}
+
+#container>div {
+    border: 1px solid black;
+    padding: 16px;
+}
