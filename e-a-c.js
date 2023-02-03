@@ -1,6 +1,8 @@
 const container  = document.querySelector('#container');
 const customBtn = document.querySelector('.prompt');
 const eraserBtn = document.querySelector('.eraser');
+const rgbBtn = document.querySelector('.rgb');
+
 
 // function to create a number of divs
 function makeGrid(cols) {
@@ -9,7 +11,7 @@ function makeGrid(cols) {
     for (let i = 0; i < (cols * cols); i++) {
         const div = document.createElement('div');
         container.appendChild(div);
-        changeColor('black', 'white');
+        changeColor('black', `1px solid white`);
     }
 }
 
@@ -31,22 +33,46 @@ function customGrid() {
 }
 
 // function to add color to grid cells
-function changeColor(colorA, colorB) {
-    const gridCells = document.querySelectorAll('#container>div');
+function changeColor(colorA, border) {
+    const gridCells = document.querySelectorAll('#container>div');    
     gridCells.forEach(cell => {
         cell.addEventListener('mouseover', () => {
             cell.addEventListener('mouseover', () => {
-                cell.setAttribute('style', `background-color: ${colorA}; border: 1px solid ${colorB}`);
+                cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
             });
         })
     })
 }
 
+// function to get random Color
+function randomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for(let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * letters.length)];
+    }
+    return color;
+}
+
 eraserBtn.addEventListener('click', () => {
-    changeColor('white', 'black');
+    changeColor('white', `1px solid black`);
 })
 
 customBtn.addEventListener('click', customGrid);
 window.onload = () => {
     makeGrid(16);
 };
+
+rgbBtn.addEventListener('click', () => {
+    
+    const gridCells = document.querySelectorAll('#container>div');    
+    gridCells.forEach(cell => {
+        let color = randomColor();
+        cell.addEventListener('mouseover', () => {
+            cell.addEventListener('mouseover', () => {
+                cell.setAttribute('style', `background-color: ${color}; border: none`);
+            });
+        })
+    })
+    
+})
