@@ -1,18 +1,13 @@
 * {
     box-sizing: border-box;
-
 }
 
 #container {
-    display: grid;
-    
-    
+    display: grid; 
     max-width: 560px;
     height: 560px;
-    
 }
 
 #container>div {
     border: 1px solid black;
-    /* padding: 1em; */
 }

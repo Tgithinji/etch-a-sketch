@@ -1,5 +1,6 @@
 const container  = document.querySelector('#container');
 const customBtn = document.querySelector('.prompt');
+const eraserBtn = document.querySelector('.eraser');
 
 // function to create a number of divs
 function makeGrid(cols) {
@@ -8,9 +9,7 @@ function makeGrid(cols) {
     for (let i = 0; i < (cols * cols); i++) {
         const div = document.createElement('div');
         container.appendChild(div);
-        div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'black';
-        });
+        changeColor('black', 'white');
     }
 }
 
@@ -30,6 +29,22 @@ function customGrid() {
     removeGrid();  
     makeGrid(cols);
 }
+
+// function to add color to grid cells
+function changeColor(colorA, colorB) {
+    const gridCells = document.querySelectorAll('#container>div');
+    gridCells.forEach(cell => {
+        cell.addEventListener('mouseover', () => {
+            cell.addEventListener('mouseover', () => {
+                cell.setAttribute('style', `background-color: ${colorA}; border: 1px solid ${colorB}`);
+            });
+        })
+    })
+}
+
+eraserBtn.addEventListener('click', () => {
+    changeColor('white', 'black');
+})
 
 customBtn.addEventListener('click', customGrid);
 window.onload = () => {
