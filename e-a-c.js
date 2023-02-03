@@ -3,6 +3,7 @@ const customBtn = document.querySelector('.prompt');
 const eraserBtn = document.querySelector('.eraser');
 const rgbBtn = document.querySelector('.rgb');
 const clearBtn = document.querySelector('.clear');
+const colorBtn = document.querySelector('#color-picker');
 
 // function to create a number of divs
 function makeGrid(cols) {
@@ -68,6 +69,11 @@ clearBtn.addEventListener('click', () => {
     gridCells.forEach(cell => {
         cell.setAttribute('style', 'background-color: #edf5e1; border: 1px solid black;');
     })
+})
+
+colorBtn.addEventListener('input', () => {
+    let newColor = document.getElementById('color-picker').value;
+    changeColor(newColor, `ipx solid black`)
 })
 
 eraserBtn.addEventListener('click', () => {

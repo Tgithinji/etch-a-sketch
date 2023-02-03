@@ -33,17 +33,24 @@ body {
     gap:10px;
 }
 
-button {
+button, .color {
     padding: .5em 1em;
     font-size: 1rem;
     background-color: #379683;
     color: #edf5e1;
     font-weight: bold;
+    flex: 1;
+    border-radius: 10%;
 
 }
 
-button:hover {
+.color:hover, button:hover {
     background-color: #05386b;
+}
+
+.color input{
+    display: block;
+    
 }
 
 @media (max-width: 600px) {
