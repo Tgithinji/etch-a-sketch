@@ -30,7 +30,7 @@ function customGrid() {
     } while (cols < 1 || cols > 100 || (isNaN(cols)));
     removeGrid();  
     makeGrid(cols);
-    changeColor('black', `1px solid white`)
+    changeColor('black', `1px solid #edf5e1`)
 }
 
 // function to add color to grid cells
@@ -56,7 +56,7 @@ function randomColor() {
 }
 
 window.addEventListener('load', () => {
-    let border = `1px solid white`;
+    let border = `1px solid #edf5e1`;
     let color = 'black';
     makeGrid(16)
     changeColor(color, border);
@@ -66,12 +66,12 @@ window.addEventListener('load', () => {
 clearBtn.addEventListener('click', () => {
     const gridCells = document.querySelectorAll('#container>div');
     gridCells.forEach(cell => {
-        cell.setAttribute('style', 'background-color: white; border: 1px solid black;');
+        cell.setAttribute('style', 'background-color: #edf5e1; border: 1px solid black;');
     })
 })
 
 eraserBtn.addEventListener('click', () => {
-    changeColor('white', `1px solid black`);
+    changeColor('#edf5e1', `1px solid black`);
 })
 
 customBtn.addEventListener('click', customGrid);
