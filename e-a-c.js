@@ -40,7 +40,7 @@ function changeColor(colorA, border) {
         cell.addEventListener('mouseover', () => {
             cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
         });
-        cell.addEventListener('touchstart', (e) => {
+        cell.addEventListener('touchmove', (e) => {
             e.preventDefault();
             cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
         })
@@ -94,7 +94,7 @@ rgbBtn.addEventListener('click', () => {
         cell.addEventListener('mouseover', () => {
             cell.setAttribute('style', `background-color: ${color}; border: none`);
         })
-        cell.addEventListener('touchstart', (e) => {
+        cell.addEventListener('touchmove', (e) => {
             e.preventDefault();
             cell.setAttribute('style', `background-color: ${color}; border: none`);
         })
