@@ -38,9 +38,11 @@ function changeColor(colorA, border) {
     const gridCells = document.querySelectorAll('#container>div');    
     gridCells.forEach(cell => {
         cell.addEventListener('mouseover', () => {
-            cell.addEventListener('mouseover', () => {
-                cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
-            });
+            cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
+        });
+        cell.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            cell.setAttribute('style', `background-color: ${colorA}; border: ${border}`);
         })
     })
 }
@@ -90,6 +92,10 @@ rgbBtn.addEventListener('click', () => {
     gridCells.forEach(cell => {
         let color = randomColor();
         cell.addEventListener('mouseover', () => {
+            cell.setAttribute('style', `background-color: ${color}; border: none`);
+        })
+        cell.addEventListener('touchstart', (e) => {
+            e.preventDefault();
             cell.setAttribute('style', `background-color: ${color}; border: none`);
         })
     })
