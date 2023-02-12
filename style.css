@@ -44,8 +44,8 @@ h1 {
     gap:10px;
 }
 
-button, .color {
-    padding: .5em 1em;
+button, .color, .slider {
+    padding: .5em;
     font-size: 1rem;
     background-color: #379683;
     color: #edf5e1;
@@ -56,6 +56,22 @@ button, .color {
     
 }
 
+.slider {
+    padding: .5em;
+    flex: 2;
+}
+.slider button {
+    width: 100%;
+    padding: .5em;
+    background-color: #5cdb95;
+}
+
+.slider input {
+    width: 100%;
+    background-color: #05386b;
+
+}
+
 .color:hover, button:hover {
     background-color: #05386b;
 }
@@ -63,7 +79,7 @@ button, .color {
 .color input{
     display: block;
     margin: auto;
-    
+    width: 100%;
 }
 
 @media (max-width: 600px) {

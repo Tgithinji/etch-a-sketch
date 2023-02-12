@@ -4,6 +4,8 @@ const eraserBtn = document.querySelector('.eraser');
 const rgbBtn = document.querySelector('.rgb');
 const clearBtn = document.querySelector('.clear');
 const colorBtn = document.querySelector('#color-picker');
+const input = document.querySelector('#slider');
+const color = document.getElementById('color-picker');
 
 // function to create a number of divs
 function makeGrid(cols) {
@@ -11,8 +13,7 @@ function makeGrid(cols) {
     grid-template-columns: repeat(${cols}, 2fr);`);
     for (let i = 0; i < (cols * cols); i++) {
         const div = document.createElement('div');
-        container.appendChild(div);
-        
+        container.appendChild(div);        
     }
 }
 
@@ -25,13 +26,11 @@ function removeGrid() {
 
 // function that takes a user choice and creates custom grid
 function customGrid() {
-    let cols;
-    do {
-        cols = parseInt(prompt('Enter a number between 1-100', ''))
-    } while (cols < 1 || cols > 100 || (isNaN(cols)));
+    let cols = input.value;
+    console.log(cols);
     removeGrid();  
     makeGrid(cols);
-    changeColor('black', `1px solid #edf5e1`)
+    changeColor(color.value, `1px solid #edf5e1`)
 }
 
 // function to add color to grid cells
@@ -49,18 +48,18 @@ function changeColor(colorA, border) {
 // function to get random Color
 function randomColor() {
     let letters = '0123456789ABCDEF';
-    let color = '#';
+    let randomColor = '#';
     for(let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * letters.length)];
+        randomColor += letters[Math.floor(Math.random() * letters.length)];
     }
-    return color;
+    return randomColor;
 }
 
 window.addEventListener('load', () => {
     let border = `1px solid #edf5e1`;
-    let color = 'black';
-    makeGrid(16)
-    changeColor(color, border);
+    
+    makeGrid(input.value)
+    changeColor(color.value, border);
 })
 
 // function to clear all colors from the grid
@@ -72,8 +71,10 @@ clearBtn.addEventListener('click', () => {
 })
 
 colorBtn.addEventListener('input', () => {
-    let newColor = document.getElementById('color-picker').value;
-    changeColor(newColor, `ipx solid black`)
+    newColor = color.value;
+    let border = `1px solid black`;
+    if (newColor === 'rgb(0,0,0)') border = '1px solid #edf5e1';
+    changeColor(newColor, border)
 })
 
 eraserBtn.addEventListener('click', () => {
@@ -89,10 +90,12 @@ rgbBtn.addEventListener('click', () => {
     gridCells.forEach(cell => {
         let color = randomColor();
         cell.addEventListener('mouseover', () => {
-            cell.addEventListener('mouseover', () => {
-                cell.setAttribute('style', `background-color: ${color}; border: none`);
-            });
+            cell.setAttribute('style', `background-color: ${color}; border: none`);
         })
     })
     
+})
+
+input.addEventListener('click', () => {
+    customBtn.textContent = `${input.value} x ${input.value}`;
 })
