@@ -10,15 +10,17 @@
 </head>
 <body>
     <h1>Etch a Sketch</h1>
-    <div class="controls">
-        <button class="prompt">Custom</button>
-        <button class="rgb">RGB</button>
-        <div class="color">Choose a color
-            <input type="color" name="color" id="color-picker">
+    <div class="main">
+        <div class="controls">
+            <button class="prompt">Custom</button>
+            <button class="rgb">RGB</button>
+            <div class="color">Choose a color
+                <input type="color" name="color" id="color-picker">
+            </div>
+            <button class="eraser">Eraser</button>
+            <button class="clear">Clear</button>
         </div>
-        <button class="eraser">Eraser</button>
-        <button class="clear">Clear</button>
+        <div id="container"></div>
     </div>
-    <div id="container"></div>
 </body>
 </html>
